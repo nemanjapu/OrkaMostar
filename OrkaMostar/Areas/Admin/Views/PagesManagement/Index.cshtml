@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OrkaMostar.Areas.Admin.ViewModels.WebsitePagesAdminViewModel>
+@{
+    ViewBag.Title = "Pages Management";
+}
+
+@Html.Partial("_AddPagePartial")
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Pages Management</h2>
+    </header>
+
+    <!-- start: page -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                            <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
+                            <a href="#" class="card-action card-action-dismiss" data-card-dismiss=""></a>
+                        </div>
+
+                        <h2 class="card-title">Top Menu</h2>
+                    </header>
+                    <div class="card-body" style="display: block;">
+                        <table class="table table-responsive-md mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Page Name</th>
+                                    @*<th>Sort Order</th>*@
+                                    <th>Template</th>
+                                    <th>Parent</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var page in Model)
+                                {
+                                    <tr>
+                                        <td>@page.MenuName</td>
+                                        @*<td>@page.SortOrder</td>*@
+                                        <td>@page.Template</td>
+                                        <td>@page.ParentName</td>
+                                        <td class="actions">
+                                            @*<a href="@Url.Action("EditWebsitePage", "PagesManagement", new { @id = page.Id })">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>*@
+                                            <a class="edit-page-trigger cur-pointer" data-page-id="@page.Id">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <a href="javascript:void(0);" id="DeletePageButton" data-pageid="@page.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="pt-3">
+                            <button type="button" data-menuid="1" class="btn btn-primary d-block add-page-modal-btn" data-toggle="modal" data-target="#AddNewWebsitePage">
+                                Add New Page
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-xl-7">
+                <div id="editPageCon" class="loader-con"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end: page -->
+</section>
+
+@Html.Partial("_DeletePagePartial")
+
+@section scripts{
+    <script src="~/Areas/Admin/Content/js/website-pages.js"></script>
+}

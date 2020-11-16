@@ -1,0 +1,22 @@
+﻿<div class="modal fade" tabindex="-1" role="dialog" id="DeletePageModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center text-danger mb-4 info-icon">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                </div>
+                <h5 class="text-center">Are you sure?</h5>
+            </div>
+            @using (Html.BeginForm("DeleteWebsitePage", "PagesManagement", FormMethod.Post))
+            {
+                <div class="modal-footer">
+
+                    @Html.AntiForgeryToken()
+                    <input id="PageIdInput" type="hidden" name="PageIdInput" value="" />
+                    <button type="submit" class="btn btn-danger m-auto">Delete</button>
+                    <button type="button" class="btn btn-light m-auto" data-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

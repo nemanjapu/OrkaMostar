@@ -1,0 +1,132 @@
+﻿@model OrkaMostar.Areas.Admin.ViewModels.EditWebsitePageAdminViewModel
+
+@using (Html.BeginForm("SaveEditedPage", "PagesManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="form-group">
+                    <label>Page top image:</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.File, new { @class = "form-control image-input-field", type = "file", id = "PageImageInput", data_multiple_caption = "" })
+                        <label class="image-input-label" for="PageImageInput">
+                            <figure>
+                                <img id="preview-image-page" src="~/@Model.ImageToShow" alt="Preview Image" />
+                            </figure>
+                            <span>Choose a file…</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="form-group">
+                    <label class="control-label" for="MenuName">Menu Name</label>
+                    @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MenuName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="PageTitle">Page Title</label>
+                    @Html.EditorFor(model => model.PageTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="PageUrl">Page Url</label>
+                    @Html.EditorFor(model => model.PageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PageUrl, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="PageExternalUrl">External Url</label>
+                    @Html.EditorFor(model => model.PageExternalUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PageExternalUrl, "", new { @class = "text-danger" })
+                </div>
+                
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="Template">Page Template</label>
+                            @*@Html.EditorFor(model => model.Template, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Template, "", new { @class = "text-danger" })*@
+                            @Html.DropDownListFor(m => m.Template, new SelectList(Model.PageTemplateDropdown, "Value", "Text"), "--------", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Template)
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="control-label" for="SortOrder">Sort Order</label>
+                            @Html.EditorFor(model => model.SortOrder, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SortOrder, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="ParentId">Parent</label>
+                            @{
+                                var lookupItem = Model.Pages;
+                                List<SelectListItem> MySelectList = lookupItem.Select(c => new SelectListItem
+                                {
+                                    Value = c.Id.ToString(),
+                                    Text = c.MenuName
+                                }).ToList();
+
+                                MySelectList.Insert(0, new SelectListItem()
+                                {
+                                    Value = "0",
+                                    Text = "No Parent"
+                                });
+                            }
+                            @Html.DropDownListFor(model => model.ParentId, MySelectList, new { @class = "form-control js-select2" })
+                            @Html.ValidationMessageFor(model => model.ParentId)
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label class="control-label mr-3" for="OpenPageInNewTab">Open Page in New Tab</label>
+                                        <div class="switch switch-sm switch-primary">
+                                            @Html.CheckBoxFor(model => model.OpenPageInNewTab, new { data_plugin_ios_switch = "" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.OpenPageInNewTab, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label class="control-label mr-3" for="isHidden">Hide Page</label>
+                                        <div class="switch switch-sm switch-primary">
+                                            @Html.CheckBoxFor(model => model.isHidden, new { data_plugin_ios_switch = "" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.isHidden, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="MetaKeywords">Meta Keywords</label>
+                            @Html.TextAreaFor(model => model.MetaKeywords, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MetaKeywords, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="MetaDescription">Meta Description</label>
+                            @Html.TextAreaFor(model => model.MetaDescription, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-block btn-success btn-save-listing"><i class="fa fa-check" aria-hidden="true"></i></button>
+    </div>
+}
