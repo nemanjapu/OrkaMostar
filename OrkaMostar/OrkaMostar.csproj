@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,6 +49,9 @@
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.2.0\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -207,9 +210,6 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -293,6 +293,7 @@
     <Content Include="Areas\Admin\Content\webfonts\fa-brands-400.svg" />
     <Content Include="Areas\Admin\Content\webfonts\fa-regular-400.svg" />
     <Content Include="Areas\Admin\Content\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\animate.compat.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -301,18 +302,88 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\demo-architecture-2.css" />
     <Content Include="Content\fontawesome-all.css" />
     <Content Include="Content\fontawesome-all.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\img\authors\author-1.jpg" />
+    <Content Include="Content\img\authors\author-2.jpg" />
+    <Content Include="Content\img\backgrounds\arch-plan-1.jpg" />
+    <Content Include="Content\img\backgrounds\arch-plan-2.jpg" />
+    <Content Include="Content\img\backgrounds\arch-plan-3.jpg" />
+    <Content Include="Content\img\blog\blog-thumb-1.jpg" />
+    <Content Include="Content\img\blog\blog-thumb-2.jpg" />
+    <Content Include="Content\img\blog\blog-thumb-3.jpg" />
+    <Content Include="Content\img\divider.jpg" />
+    <Content Include="Content\img\generic\generic-1.jpg" />
+    <Content Include="Content\img\generic\generic-10.jpg" />
+    <Content Include="Content\img\generic\generic-11.jpg" />
+    <Content Include="Content\img\generic\generic-12.jpg" />
+    <Content Include="Content\img\generic\generic-13.jpg" />
+    <Content Include="Content\img\generic\generic-14.jpg" />
+    <Content Include="Content\img\generic\generic-15.jpg" />
+    <Content Include="Content\img\generic\generic-2.jpg" />
+    <Content Include="Content\img\generic\generic-3.jpg" />
+    <Content Include="Content\img\generic\generic-4.jpg" />
+    <Content Include="Content\img\generic\generic-5.jpg" />
+    <Content Include="Content\img\generic\generic-6.jpg" />
+    <Content Include="Content\img\generic\generic-7.jpg" />
+    <Content Include="Content\img\generic\generic-8.jpg" />
+    <Content Include="Content\img\generic\generic-9.jpg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logos\logo-1.png" />
+    <Content Include="Content\img\logos\logo-10.png" />
+    <Content Include="Content\img\logos\logo-11.png" />
+    <Content Include="Content\img\logos\logo-12.png" />
+    <Content Include="Content\img\logos\logo-13.png" />
+    <Content Include="Content\img\logos\logo-14.png" />
+    <Content Include="Content\img\logos\logo-15.png" />
+    <Content Include="Content\img\logos\logo-2.png" />
+    <Content Include="Content\img\logos\logo-3.png" />
+    <Content Include="Content\img\logos\logo-4.png" />
+    <Content Include="Content\img\logos\logo-5.png" />
+    <Content Include="Content\img\logos\logo-6.png" />
+    <Content Include="Content\img\logos\logo-7.png" />
+    <Content Include="Content\img\logos\logo-8.png" />
+    <Content Include="Content\img\logos\logo-9.png" />
+    <Content Include="Content\img\logos\logo-light-1.png" />
+    <Content Include="Content\img\logos\logo-light-2.png" />
+    <Content Include="Content\img\logos\logo-light-3.png" />
+    <Content Include="Content\img\logos\logo-light-4.png" />
+    <Content Include="Content\img\logos\logo-light-5.png" />
+    <Content Include="Content\img\logos\logo-light-6.png" />
+    <Content Include="Content\img\logos\logo-light-7.png" />
+    <Content Include="Content\img\map-pin.png" />
+    <Content Include="Content\img\projects\project-1.jpg" />
+    <Content Include="Content\img\projects\project-2.jpg" />
+    <Content Include="Content\img\projects\project-3-big.jpg" />
+    <Content Include="Content\img\projects\project-3.jpg" />
+    <Content Include="Content\img\projects\project-4.jpg" />
+    <Content Include="Content\img\projects\project-5.jpg" />
+    <Content Include="Content\img\projects\project-6.jpg" />
+    <Content Include="Content\img\slides\sl1.jpg" />
+    <Content Include="Content\img\slides\sl2.jpg" />
+    <Content Include="Content\img\slides\slide-1-1.jpg" />
+    <Content Include="Content\img\slides\slide-1-2.jpg" />
     <Content Include="Content\LICENSE.txt" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.theme.default.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
+    <Content Include="Content\simple-line-icons.css" />
+    <Content Include="Content\skin-architecture-2.css" />
     <Content Include="Content\solid.css" />
     <Content Include="Content\solid.min.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
+    <Content Include="Content\theme-blog.css" />
+    <Content Include="Content\theme-elements.css" />
+    <Content Include="Content\theme-shop.css" />
+    <Content Include="Content\theme.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\v4-shims.css" />
@@ -323,6 +394,13 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\common.init.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\common.min.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\demo-architecture-2.js" />
+    <Content Include="Scripts\easypiechart.js" />
+    <Content Include="Scripts\easypiechart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -379,19 +457,46 @@
     <Content Include="Areas\Admin\Views\PagesManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PagesManagement\EditWebsitePage.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditWebsitePagePartial.cshtml" />
+    <Content Include="Content\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\img\icons\house-plant.svg" />
+    <Content Include="Content\img\icons\sofa.svg" />
+    <Content Include="Content\img\icons\wallpaper.svg" />
+    <Content Include="Content\img\icons\children.svg" />
+    <Content Include="Content\img\icons\swimming.svg" />
+    <Content Include="Content\img\icons\sprintko.svg" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.appear.js" />
+    <Content Include="Scripts\jquery.appear.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.cookie.min.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.easypiechart.js" />
+    <Content Include="Scripts\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\jquery.gmap.js" />
+    <Content Include="Scripts\jquery.gmap.min.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
+    <Content Include="Scripts\jquery.lazyload.js" />
+    <Content Include="Scripts\jquery.lazyload.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.vide.js" />
+    <Content Include="Scripts\jquery.vide.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -459,12 +564,16 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\theme.init.js" />
+    <Content Include="Scripts\theme.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\vivus.js" />
+    <Content Include="Scripts\vivus.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -525,6 +634,7 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\CMS\Homepage.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -578,8 +688,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets" Condition="Exists('..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

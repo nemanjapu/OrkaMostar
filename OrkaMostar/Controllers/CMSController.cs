@@ -123,13 +123,6 @@ namespace OrkaMostar.Controllers
             return View(template, websitePageToRedirectTo);
         }
 
-        public ActionResult GetSideMenuItems()
-        {
-            var model = _unitOfWork.WebsitePages.GetActivePagesByMenuId(2).OrderBy(m => m.SortOrder).ThenBy(m => m.Id);
-
-            return PartialView("_SideMenuPartial", model);
-        }
-
         public ActionResult GetSocialMedia()
         {
             var model = _unitOfWork.GlobalSettings.GetGlobalValues();
@@ -166,7 +159,7 @@ namespace OrkaMostar.Controllers
                 }
             }
 
-            return PartialView("_TopMenuPartial", model);
+            return PartialView("_MenuPartial", model);
         }
     }
 }
