@@ -1,4 +1,11 @@
-﻿// WEBSITE PAGE JS
+﻿function loadAllPagesPartial() {
+    $('#pagesListCon').load('/PagesManagement/LoadAllPages');
+}
+
+$(document).ready(function () {
+    loadAllPagesPartial();
+});
+
 function PopulateParentDropdownList(menuId) {
     var id = menuId;
     $.ajax({
@@ -18,7 +25,7 @@ function PopulateParentDropdownList(menuId) {
     });
 }
 
-$('.add-page-modal-btn').on('click', function () {
+$(document).delegate('.add-page-modal-btn','click', function () {
     var menuId = $(this).data('menuid');
     $('#newPageMenuId').val(menuId);
     PopulateParentDropdownList(menuId);
@@ -43,6 +50,7 @@ $("#addWebsitePageForm").submit(function (e) {
             success: function () {
                 toastr.success("New page added!");
                 $("#AddNewWebsitePage").modal('hide');
+                loadAllPagesPartial();
             },
             error: function () {
                 toastr.error("Error! Page not added.");
@@ -54,15 +62,18 @@ $("#addWebsitePageForm").submit(function (e) {
     }
 });
 
-// WEBSITE PAGE JS
-
 $(document).delegate('#DeletePageButton', 'click', function () {
     var PageId = $(this).data('pageid');
     $('#PageIdInput').val(PageId);
 });
 
-$('.edit-page-trigger').on('click', function () {
+$(document).delegate('.edit-page-trigger', 'click', function () {
     $('#editPageCon').append(loader());
     var pageId = $(this).data('page-id');
     $('#editPageCon').load('/PagesManagement/EditWebsitePage/' + pageId);
 });
+
+function editPageFormSaved() {
+    toastr.success("Saved!");
+    loadAllPagesPartial();
+}

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OrkaMostar.Areas.Admin.ViewModels.WebsitePagesAdminViewModel>
+
+<section class="card">
+    <header class="card-header">
+        <div class="card-actions">
+            <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
+            <a href="#" class="card-action card-action-dismiss" data-card-dismiss=""></a>
+        </div>
+
+        <h2 class="card-title">All pages</h2>
+    </header>
+    <div class="card-body" style="display: block;">
+        <table class="table table-responsive-md mb-0">
+            <thead>
+                <tr>
+                    <th>Page Name</th>
+                    <th>Parent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var page in Model)
+                {
+                    <tr>
+                        <td>
+                            @{var hidden = "";
+                                if (page.isHidden)
+                                {
+                                    hidden = "(Hidden)";
+                                }
+                            }
+                            @page.MenuName @hidden
+                        </td>
+                        <td>@page.ParentName</td>
+                        <td class="actions">
+                            <a class="edit-page-trigger cur-pointer btn btn-primary text-white mr-3" data-page-id="@page.Id">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a class="btn btn-danger text-white" href="javascript:void(0);" id="DeletePageButton" data-pageid="@page.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pt-3">
+            <button type="button" data-menuid="1" class="btn btn-primary d-block add-page-modal-btn" data-toggle="modal" data-target="#AddNewWebsitePage">
+                Add New Page
+            </button>
+        </div>
+    </div>
+</section>

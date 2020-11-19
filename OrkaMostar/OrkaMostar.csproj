@@ -308,6 +308,7 @@
     <Content Include="Content\fontawesome-all.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\img\!logged-user.jpg" />
     <Content Include="Content\img\authors\author-1.jpg" />
     <Content Include="Content\img\authors\author-2.jpg" />
     <Content Include="Content\img\backgrounds\arch-plan-1.jpg" />
@@ -468,6 +469,7 @@
     <Content Include="Content\img\icons\children.svg" />
     <Content Include="Content\img\icons\swimming.svg" />
     <Content Include="Content\img\icons\sprintko.svg" />
+    <Content Include="Areas\Admin\Views\Shared\_PagesListPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

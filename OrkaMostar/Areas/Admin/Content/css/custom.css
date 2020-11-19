@@ -109,3 +109,7 @@
         transform: rotate(360deg);
     }
 }
+
+.table th, .table td{
+    vertical-align: middle;
+}

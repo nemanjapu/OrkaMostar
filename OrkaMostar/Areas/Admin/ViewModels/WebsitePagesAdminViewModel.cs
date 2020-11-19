@@ -9,5 +9,6 @@
         public int ParentId { get; set; }
         public string MenuName { get; set; }
         public int MenuId { get; set; }
+        public bool isHidden{ get; set; }
     }
 }
