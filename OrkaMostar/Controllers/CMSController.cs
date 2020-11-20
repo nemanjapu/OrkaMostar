@@ -111,7 +111,6 @@ namespace OrkaMostar.Controllers
                 Content3 = websitePageDB.Content3,
                 Content4 = websitePageDB.Content4,
                 Content5 = websitePageDB.Content5,
-                ImageToShow = string.IsNullOrEmpty(websitePageDB.ImagePath) ? "Content/images/bioreg-page-bg.jpg" : websitePageDB.ImagePath + "/" + websitePageDB.ImageName,
                 MetaDescription = websitePageDB.MetaDescription,
                 MetaKeywords = websitePageDB.MetaKeywords,
                 PageUrl = websitePageDB.PageUrl,
