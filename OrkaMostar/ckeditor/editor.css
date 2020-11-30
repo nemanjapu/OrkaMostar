@@ -1,0 +1,17 @@
+﻿.cke_editable {
+    padding: 10px;
+    border: 2px dashed #b0b0b0;
+}
+
+.btn-save-editor {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: #0fd215;
+    z-index: 1000;
+    font-size: 40px;
+    border-color: #0fd215;
+    line-height: 1;
+}

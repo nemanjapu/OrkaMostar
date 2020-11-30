@@ -1,33 +1,38 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    @model  OrkaMostar.Core.ViewModels.PageContentViewModel
     Layout = null;
+    string canonicalUrl = "https://www.orkamostar.ba/" + Model.PageUrl;
 }
 
 <!DOCTYPE html>
-<html>
-<head>
-
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Demo Architecture 2 | Porto - Responsive HTML5 Template</title>
-
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
-
-    <!-- Favicon -->
-    @*<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">*@
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<html lang="bs">
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>@Model.PageTitle</title>
+    <meta name="description" content="@Model.MetaDescription">
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta property="og:image" content="https://www.orkamostar.ba/Content/images/logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta name="google-site-verification" content="2V1Aguc6l9n7yDL8OQflueGrNJflMMdFeG7iER8kAXQ" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0153cc">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:url" content="@OrkaMostar.Helpers.HTMLHelpers.GetBaseUrl()" />
+    <meta property="og:title" content="@Model.PageTitle" />
+    <meta property="og:description" content="@Model.MetaDescription" />
+    <meta property="og:image:alt" content="@Model.PageTitle" />
+    <meta property="og:type" content="website" />
 
     <!-- Web Fonts  -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COverpass:200,400,600,700,800,900%7CPT+Serif&display=swap" rel="stylesheet" type="text/css">
 
-    <!-- Vendor CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/fontawesome-all.css">
     <link rel="stylesheet" href="~/Content/animate.compat.css">
@@ -35,20 +40,12 @@
     <link rel="stylesheet" href="~/Content/owl.carousel.css">
     <link rel="stylesheet" href="~/Content/owl.theme.default.css">
     <link rel="stylesheet" href="~/Content/magnific-popup.css">
-
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="~/Content/theme.css">
     <link rel="stylesheet" href="~/Content/theme-elements.css">
     <link rel="stylesheet" href="~/Content/theme-blog.css">
     <link rel="stylesheet" href="~/Content/theme-shop.css">
-
-
-    <!-- Demo CSS -->
     <link rel="stylesheet" href="~/Content/demo-architecture-2.css">
-    <!-- Skin CSS -->
     <link rel="stylesheet" href="~/Content/skin-architecture-2.css">
-
-    <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="~/Content/custom.css">
 
     <!-- Head Libs -->
@@ -103,9 +100,9 @@
                                             <h2 class="text-color-light line-height-6 line-height-md-2 text-5 text-md-6 positive-ls-3 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="250">Mostar</h2>
                                         </div>
                                         @*<div class="overflow-hidden opacity-6 mb-5">
-                                                <p class="text-color-light text-3-4 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500">Elegant Solutions to Complex Problems</p>
-                                            </div>
-                                            <a href="#start" data-hash data-hash-offset="140" class="btn btn-primary custom-btn-style-1 font-weight-bold text-3 px-5 py-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">GET STARTED</a>*@
+                                            <p class="text-color-light text-3-4 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500">Elegant Solutions to Complex Problems</p>
+                                        </div>
+                                        <a href="#start" data-hash data-hash-offset="140" class="btn btn-primary custom-btn-style-1 font-weight-bold text-3 px-5 py-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">GET STARTED</a>*@
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +120,8 @@
                                             <h2 class="text-color-light line-height-6 line-height-md-2 text-5 text-md-6 positive-ls-3 mb-0 appear-animation d-none" data-appear-animation="maskUp" data-appear-animation-delay="250">Mostar</h2>
                                         </div>
                                         @*<div class="overflow-hidden opacity-6 mb-5">
-                                                <p class="text-color-light text-3-4 mb-0 appear-animation d-none" data-appear-animation="maskUp" data-appear-animation-delay="500">Elegant Solutions to Complex Problems</p>
-                                            </div>*@
+                                            <p class="text-color-light text-3-4 mb-0 appear-animation d-none" data-appear-animation="maskUp" data-appear-animation-delay="500">Elegant Solutions to Complex Problems</p>
+                                        </div>*@
                                         @*<a href="#start" data-hash data-hash-offset="140" class="btn btn-primary custom-btn-style-1 custom-btn-style-1-right font-weight-bold text-3 px-5 py-3 appear-animation d-none" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">GET STARTED</a>*@
                                     </div>
                                 </div>
@@ -225,37 +222,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container container-lg-custom pb-3">
-                        <div class="row align-items-center text-center py-5 my-3">
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner1.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                    <div class="container container-lg-custom pb-3 partners">
+                        <div class="owl-carousel align-items-center text-center py-5 my-3 owl-theme nav-style-1 nav-font-size-lg custom-nav-grey mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 5}}, 'loop': true, 'nav': true, 'dots': false, 'margin': 20, 'autoplay': true}">
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner1.jpg" alt="Restoran Mio Pasto" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner2.png" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner2.jpg" alt="JP Elektroprivreda" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner3.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner3.jpg" alt="Stomatološka ordinacija Dr. A. Mahinić" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner4.png" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner4.png" alt="Interagent Mostar" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner5.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner5.jpg" alt="Lastatravel" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner6.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner6.jpg" alt="Moj Taxi Mostar" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner7.png" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner7.png" alt="ZK Office" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner8.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner8.jpg" alt="NET doo" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner9.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner9.jpg" alt="BH Telekom" class="img-fluid" />
                             </div>
-                            <div class="col-sm-4 col-xl-2 mb-5 mb-xl-0">
-                                <img src="~/Content/img/logos/partner10.jpg" alt class="img-fluid" style="max-width: 120px;" />
+                            <div class="col-12">
+                                <img src="~/Content/img/logos/partner10.jpg" alt="Sportski savez grada Mostara" class="img-fluid" />
                             </div>
                         </div>
                     </div>
@@ -366,33 +363,33 @@
                         <div class="masonry-loader masonry-loader-showing">
                             <div class="masonry row" data-plugin-masonry data-plugin-options="{'layoutMode': 'packery', 'itemSelector': '.masonry-item', 'sortBy': 'original-order'}">
                                 <div class="masonry-item no-default-style col-6 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-5.jpg" data-appear-animation="maskDown" data-appear-animation-delay="500">
-                                        <img src="~/Content/img/generic/generic-5.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery1.jpg" data-appear-animation="maskDown" data-appear-animation-delay="500">
+                                        <img src="~/Content/img/gallery/gallery1.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                                 <div class="masonry-item no-default-style col-6 col-lg-3 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-6.jpg" data-appear-animation="maskRight" data-appear-animation-delay="250">
-                                        <img src="~/Content/img/generic/generic-6.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery2.jpg" data-appear-animation="maskRight" data-appear-animation-delay="250">
+                                        <img src="~/Content/img/gallery/gallery2.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                                 <div class="masonry-item no-default-style col-6 col-lg-3 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-7.jpg" data-appear-animation="maskLeft" data-appear-animation-delay="750">
-                                        <img src="~/Content/img/generic/generic-7.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery3.jpg" data-appear-animation="maskLeft" data-appear-animation-delay="750">
+                                        <img src="~/Content/img/gallery/gallery3.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                                 <div class="masonry-item no-default-style col-6 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-10.jpg" data-appear-animation="maskUp" data-appear-animation-delay="500">
-                                        <img src="~/Content/img/generic/generic-10.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery4.jpg" data-appear-animation="maskUp" data-appear-animation-delay="500">
+                                        <img src="~/Content/img/gallery/gallery6.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                                 <div class="masonry-item no-default-style col-6 col-lg-3 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-8.jpg" data-appear-animation="maskRight" data-appear-animation-delay="750">
-                                        <img src="~/Content/img/generic/generic-8.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery5.jpg" data-appear-animation="maskRight" data-appear-animation-delay="750">
+                                        <img src="~/Content/img/gallery/gallery5.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                                 <div class="masonry-item no-default-style col-6 col-lg-3 overflow-hidden px-0">
-                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/generic/generic-9.jpg" data-appear-animation="maskLeft" data-appear-animation-delay="250">
-                                        <img src="~/Content/img/generic/generic-9.jpg" class="img-fluid rounded-0" alt="" />
+                                    <a class="d-inline-block custom-img-thumbnail-style-1 img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 appear-animation" href="~/Content/img/gallery/gallery6.jpg" data-appear-animation="maskLeft" data-appear-animation-delay="250">
+                                        <img src="~/Content/img/gallery/gallery4.jpg" class="img-fluid rounded-0" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -510,31 +507,46 @@
                             <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-font-size-lg custom-nav-grey mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 2}, '992': {'items': 1}, '1200': {'items': 2}}, 'loop': true, 'nav': true, 'dots': false, 'margin': 20}">
                                 <div>
                                     <div class="card border-radius-0">
-                                        <img class="card-img-top border-radius-0" src="~/Content/img/authors/author-1.jpg" alt="" />
+                                        <img class="card-img-top border-radius-0" src="~/Content/img/team/team1.jpg" alt="Damir Đedović - Predsjednik KVS Orka" />
                                         <div class="card-body text-center">
-                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">John Doe</h4>
-                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">CEO & FOUNDER</h3>
-                                            <p class="card-text font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor...</p>
+                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Damir Đedović</h4>
+                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">PREDSJEDNIK</h3>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="card border-radius-0">
-                                        <img class="card-img-top border-radius-0" src="~/Content/img/authors/author-2.jpg" alt="" />
+                                        <img class="card-img-top border-radius-0" src="~/Content/img/team/team2.jpg" alt="Almir Popo - Podpredsjednik KVS Orka" />
                                         <div class="card-body text-center">
-                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Janice Doe</h4>
-                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">ARCHITECT</h3>
-                                            <p class="card-text font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor...</p>
+                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Almir Popo</h4>
+                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">PODPREDSJEDNIK</h3>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="card border-radius-0">
-                                        <img class="card-img-top border-radius-0" src="~/Content/img/authors/author-1.jpg" alt="" />
+                                        <img class="card-img-top border-radius-0" src="~/Content/img/team/team3.jpg" alt="Alena Ćemalović - Trener KVS Orka" />
                                         <div class="card-body text-center">
-                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">John Doe</h4>
-                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">CEO & FOUNDER</h3>
-                                            <p class="card-text font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor...</p>
+                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Alena Ćemalović</h4>
+                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">TRENER</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card border-radius-0">
+                                        <img class="card-img-top border-radius-0" src="~/Content/img/team/team4.jpg" alt="Deni Mandić - Trener KVS Orka" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Deni Mandić</h4>
+                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">TRENER</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card border-radius-0">
+                                        <img class="card-img-top border-radius-0" src="~/Content/img/team/team5.jpg" alt="Jasmin Trnovac - Trener KVS Orka" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title font-weight-extra-bold text-color-dark text-5 mb-1">Jasmin Trnovac</h4>
+                                            <h3 class="text-color-default text-3-4 ls-0 font-weight-normal mb-2 pb-1">TRENER</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -696,111 +708,7 @@
 
         </div>
 
-        <footer id="footer" class="bg-primary border-0">
-            <div class="container container-lg-custom pt-5 pb-3">
-                <div class="row py-5">
-                    <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">Address</h4>
-                        <ul class="list list-unstyled">
-                            <li class="mb-1">
-                                12345  Porto Blvd.
-                            </li>
-                            <li class="mb-1">
-                                Suite 1500
-                            </li>
-                            <li>
-                                Los Angeles, California 90000
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">Contacts</h4>
-                        <ul class="list-unstyled">
-                            <li>
-                                <span class="d-block line-height-2 mb-1">OFFICE</span>
-                                <a href="tel:+1234567890" class="text-color-light text-6 text-lg-4 text-xl-6 font-weight-bold">800-123-4568</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">Useful Links</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-1">
-                                <a href="demo-architecture-2-services.html">Our Services</a>
-                            </li>
-                            <li class="mb-1">
-                                <a href="#">Payment Methods</a>
-                            </li>
-                            <li class="mb-1">
-                                <a href="#">Services Guide</a>
-                            </li>
-                            <li>
-                                <a href="#">FAQs</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">Services</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-1">
-                                <a href="demo-architecture-2-services-detail.html">Design & Planning</a>
-                            </li>
-                            <li class="mb-1">
-                                <a href="demo-architecture-2-services-detail.html">Interior Design</a>
-                            </li>
-                            <li class="mb-1">
-                                <a href="demo-architecture-2-services-detail.html">Exerior Design</a>
-                            </li>
-                            <li>
-                                <a href="demo-architecture-2-services-detail.html">Construction Drawings</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">About</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-1">
-                                <a href="demo-architecture-2-about-us.html">About Us</a>
-                            </li>
-                            <li>
-                                <a href="demo-architecture-2-contact.html">Send a Message</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 col-lg-2">
-                        <h4 class="font-weight-extra-bold text-5 ls-0">Follow Us</h4>
-                        <ul class="social-icons social-icons-clean social-icons-icon-light">
-                            <li>
-                                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright bg-primary">
-                <div class="container container-lg-custom pb-4">
-                    <div class="row">
-                        <div class="col">
-                            <hr class="my-0 bg-color-light opacity-1">
-                        </div>
-                    </div>
-                    <div class="row py-5 my-3">
-                        <div class="col text-center">
-                            <a href="demo-architecture-2.html" class="d-inline-block mb-3">
-                                <img alt="Porto" width="115" height="30" src="~/Content/img/logo.png">
-                            </a>
-                            <p class="text-3 mb-0">Porto Architecture 2. © 2020. All Rights Reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @Html.Partial("_FooterPartial")
 
     </div>
 

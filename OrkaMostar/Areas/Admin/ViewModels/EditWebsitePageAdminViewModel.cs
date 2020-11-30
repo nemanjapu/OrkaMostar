@@ -31,6 +31,9 @@ namespace OrkaMostar.Areas.Admin.ViewModels
         public HttpPostedFileBase File { get; set; }
         public string ImageToShow { get; set; }
         public List<SelectListItem> PageTemplateDropdown { get; set; }
+        public DateTime DateAdded { get; set; }
+        [AllowHtml]
+        public string Content1 { get; set; }
 
         public EditWebsitePageAdminViewModel() => PageTemplateDropdown = DropdownHelper.GetPageTemplateList();
     }

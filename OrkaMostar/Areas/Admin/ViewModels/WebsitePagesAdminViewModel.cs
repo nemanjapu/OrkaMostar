@@ -1,4 +1,6 @@
-﻿namespace OrkaMostar.Areas.Admin.ViewModels
+﻿using System;
+
+namespace OrkaMostar.Areas.Admin.ViewModels
 {
     public class WebsitePagesAdminViewModel
     {
@@ -10,5 +12,6 @@
         public string MenuName { get; set; }
         public int MenuId { get; set; }
         public bool isHidden{ get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

@@ -1,0 +1,52 @@
+﻿@model OrkaMostar.Areas.Admin.ViewModels.EditWebsitePageAdminViewModel
+
+@using (Ajax.BeginForm("SaveEditedPage", "PagesManagement", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "editPageFormSaved"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="form-group">
+                    <label class="control-label" for="MenuName">News Title</label>
+                    @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MenuName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="PageTitle">Page Title</label>
+                    @Html.EditorFor(model => model.PageTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PageTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-xl-6 pt-3">
+                <div class="form-group">
+                    <label class="control-label" for="MetaKeywords">Meta Keywords</label>
+                    @Html.TextAreaFor(model => model.MetaKeywords, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaKeywords, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-xl-6 pt-3">
+                <div class="form-group">
+                    <label class="control-label" for="MetaDescription">Meta Description</label>
+                    @Html.TextAreaFor(model => model.MetaDescription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="control-label" for="MetaDescription">Content</label>
+                    @Html.TextAreaFor(model => model.Content1, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-block btn-success btn-save-listing"><i class="fa fa-check" aria-hidden="true"></i></button>
+    </div>
+}

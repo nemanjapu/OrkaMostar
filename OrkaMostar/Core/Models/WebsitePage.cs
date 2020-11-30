@@ -24,6 +24,7 @@ namespace OrkaMostar.Core.Models
         public string ImageName { get; set; }
         public string ImagePath { get; set; }
         public bool isBlogPost { get; set; }
+        public DateTime DateAdded { get; set; }
 
         /*Page contents*/
 

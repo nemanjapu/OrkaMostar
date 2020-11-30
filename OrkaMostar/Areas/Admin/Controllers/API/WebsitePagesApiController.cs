@@ -22,14 +22,14 @@ namespace OrkaMostar.Areas.Admin.Controllers.API
         }
 
         [ResponseType(typeof(WebsitePage))]
-        public IHttpActionResult AddNewWebsitePage(WebsitePage websitePage)
+        public IHttpActionResult AddNewWebsitePage(WebsitePage websitePage, bool isBlog)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _unitOfWork.WebsitePages.AddPage(websitePage);
+            _unitOfWork.WebsitePages.AddPage(websitePage, false);
             _unitOfWork.Complete();
 
             return CreatedAtRoute("DefaultApi", new { id = websitePage.Id }, websitePage);

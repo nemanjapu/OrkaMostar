@@ -1,0 +1,32 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "News Management";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>News Management</h2>
+    </header>
+
+    <!-- start: page -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5">
+                <div id="pagesListCon"></div>
+            </div>
+            <div class="col-xl-7">
+                <div id="editPageCon" class="loader-con"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end: page -->
+</section>
+
+@Html.Partial("_DeletePagePartial")
+
+@section scripts{
+    <script src="~/ckeditor/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/ckeditor/config.js"></script>
+    <script src="~/Areas/Admin/Content/js/blogs.js"></script>
+}

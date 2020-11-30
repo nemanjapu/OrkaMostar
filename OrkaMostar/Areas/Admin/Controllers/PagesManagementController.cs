@@ -27,7 +27,7 @@ namespace OrkaMostar.Areas.Admin.Controllers
 
         public PartialViewResult LoadAllPages()
         {
-            var model = _unitOfWork.WebsitePages.GetAllPages().Select(m => new WebsitePagesAdminViewModel()
+            var model = _unitOfWork.WebsitePages.GetAllPages(false).Select(m => new WebsitePagesAdminViewModel()
             {
                 Id = m.Id,
                 MenuId = m.MenuId,

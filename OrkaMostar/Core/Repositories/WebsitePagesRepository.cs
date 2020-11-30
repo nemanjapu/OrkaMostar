@@ -17,7 +17,7 @@ namespace OrkaMostar.Core.Repositories
             _ctx = ctx;
         }
 
-        public void AddPage(WebsitePage page)
+        public void AddPage(WebsitePage page, bool isBlog = false)
         {
             string pageUrlToSave = Helpers.UrlCleaner.CleanUrl(page.MenuName);
             if (GetPageByUrl(pageUrlToSave) != null)
@@ -29,6 +29,10 @@ namespace OrkaMostar.Core.Repositories
             {
                 page.PageUrl = GetPageById(page.ParentId).PageUrl + pageUrlToSave + "/";
             }
+            if (isBlog)
+            {
+                page.PageUrl = "/novosti/" + pageUrlToSave + "/";
+            }
             else
             {
                 page.PageUrl = "/" + pageUrlToSave + "/";
@@ -37,9 +41,9 @@ namespace OrkaMostar.Core.Repositories
             _ctx.WebsitePages.Add(page);
         }
 
-        public IEnumerable<WebsitePage> GetActivePages()
+        public IEnumerable<WebsitePage> GetActivePages(bool isBlog)
         {
-            return _ctx.WebsitePages.Where(wp => wp.isHidden).AsEnumerable();
+            return _ctx.WebsitePages.Where(wp => !wp.isHidden && wp.isBlogPost == isBlog).AsEnumerable();
         }
 
         public IEnumerable<WebsitePage> GetPagesForSitemap()
@@ -52,14 +56,14 @@ namespace OrkaMostar.Core.Repositories
             return _ctx.WebsitePages.Where(wp => wp.MenuId == menuId).AsEnumerable();
         }
 
-        public IEnumerable<WebsitePage> GetAllPages()
+        public IEnumerable<WebsitePage> GetAllPages(bool isBlog)
         {
-            return _ctx.WebsitePages.AsEnumerable();
+            return _ctx.WebsitePages.Where(wp => wp.isBlogPost == isBlog).AsEnumerable();
         }
 
-        public IEnumerable<WebsitePage> GetHiddenPages()
+        public IEnumerable<WebsitePage> GetHiddenPages(bool isBlog)
         {
-            return _ctx.WebsitePages.Where(wp => wp.isHidden).AsEnumerable();
+            return _ctx.WebsitePages.Where(wp => wp.isHidden && wp.isBlogPost == isBlog).AsEnumerable();
         }
 
         public WebsitePage GetPageById(int id)

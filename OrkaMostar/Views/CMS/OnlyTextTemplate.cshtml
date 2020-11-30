@@ -1,0 +1,221 @@
+﻿@{
+    @model  OrkaMostar.Core.ViewModels.PageContentViewModel
+    Layout = null;
+    string canonicalUrl = "https://www.orkamostar.ba/" + Model.PageUrl;
+}
+
+<!DOCTYPE html>
+<html lang="bs">
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>@Model.PageTitle</title>
+    <meta name="description" content="@Model.MetaDescription">
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta property="og:image" content="https://www.orkamostar.ba/Content/images/logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta name="google-site-verification" content="2V1Aguc6l9n7yDL8OQflueGrNJflMMdFeG7iER8kAXQ" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0153cc">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:url" content="@OrkaMostar.Helpers.HTMLHelpers.GetBaseUrl()" />
+    <meta property="og:title" content="@Model.PageTitle" />
+    <meta property="og:description" content="@Model.MetaDescription" />
+    <meta property="og:image:alt" content="@Model.PageTitle" />
+    <meta property="og:type" content="website" />
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COverpass:200,400,600,700,800,900%7CPT+Serif&display=swap" rel="stylesheet" type="text/css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/fontawesome-all.css">
+    <link rel="stylesheet" href="~/Content/animate.compat.css">
+    <link rel="stylesheet" href="~/Content/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/owl.theme.default.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/theme.css">
+    <link rel="stylesheet" href="~/Content/theme-elements.css">
+    <link rel="stylesheet" href="~/Content/theme-blog.css">
+    <link rel="stylesheet" href="~/Content/theme-shop.css">
+    <link rel="stylesheet" href="~/Content/demo-architecture-2.css">
+    <link rel="stylesheet" href="~/Content/skin-architecture-2.css">
+    <link rel="stylesheet" href="~/Content/custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body class="loading-overlay-showing" data-loading-overlay data-plugin-page-transition>
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <div class="body">
+        @Html.Action("GetTopMenuItems", "CMS")
+
+        <div role="main" class="main">
+
+            <section class="custom-page-header-1 page-header page-header-modern page-header-lg bg-primary border-0 z-index-1 my-0">
+                <div class="custom-page-header-1-wrapper overflow-hidden">
+                    <div class="custom-bg-grey-1 py-5 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="800">
+                        <div class="container py-3 my-3">
+                            <div class="row">
+                                <div class="col-md-12 align-self-center p-static text-center">
+                                    <div class="overflow-hidden mb-2">
+                                        <h1 class="font-weight-black text-12 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1200">@Model.PageTitle</h1>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 align-self-center">
+                                    <div class="overflow-hidden">
+                                        <ul class="custom-breadcrumb-style-1 breadcrumb breadcrumb-light custom-font-secondary d-block text-center custom-ls-1 text-5 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1450">
+                                            <li class="text-transform-none"><a href="/" class="text-decoration-none">Početna</a></li>
+                                            <li class="text-transform-none active">@Model.PageTitle</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="custom-page-wrapper pt-5">
+                <div class="spacer py-4 my-5"></div>
+                <div class="container container-lg-custom">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1600">
+
+                            <article class="mb-5">
+                                <div class="card border-0 border-radius-0">
+                                    <div class="card-body p-0 z-index-1">
+                                        <a href="demo-architecture-2-blog-post.html">
+                                            <img class="card-img-top border-radius-0 hover-effect-2" src="img/blog/wide/blog-37.jpg" alt="Card Image">
+                                        </a>
+                                        <p class="text-uppercase text-1 mb-3 pt-1 text-color-default">
+                                            <time pubdate datetime="2020-01-10">10 Jan 2020</time>
+                                            <span class="opacity-3 d-inline-block px-2">|</span>
+                                            3 Comments
+                                            <span class="opacity-3 d-inline-block px-2">|</span>
+                                            John Doe
+                                        </p>
+                                        <div class="card-body p-0">
+                                            <h4 class="card-title mb-3 text-5 font-weight-semibold"><a class="text-color-dark text-color-hover-primary text-decoration-none font-weight-bold text-3-4" href="demo-architecture-2-blog-post.html">Lorem ipsum dolor sit a met</a></h4>
+                                            <p class="card-text mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor...</p>
+                                            <a href="demo-architecture-2-blog-post.html" class="custom-read-more d-inline-flex align-items-center font-weight-semibold text-3 text-decoration-none pl-0">
+                                                READ MORE +
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <hr class="mb-5">
+
+                            <article class="mb-5">
+                                <div class="card border-0 border-radius-0">
+                                    <div class="card-body p-0 z-index-1">
+                                        <a href="demo-architecture-2-blog-post.html">
+                                            <img class="card-img-top border-radius-0 hover-effect-2" src="img/blog/wide/blog-11.jpg" alt="Card Image">
+                                        </a>
+                                        <p class="text-uppercase text-1 mb-3 pt-1 text-color-default">
+                                            <time pubdate datetime="2020-01-10">10 Jan 2020</time>
+                                            <span class="opacity-3 d-inline-block px-2">|</span>
+                                            3 Comments
+                                            <span class="opacity-3 d-inline-block px-2">|</span>
+                                            John Doe
+                                        </p>
+                                        <div class="card-body p-0">
+                                            <h4 class="card-title mb-3 text-5 font-weight-semibold"><a class="text-color-dark text-color-hover-primary text-decoration-none font-weight-bold text-3-4" href="demo-architecture-2-blog-post.html">Lorem ipsum dolor sit a met</a></h4>
+                                            <p class="card-text mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor...</p>
+                                            <a href="demo-architecture-2-blog-post.html" class="custom-read-more d-inline-flex align-items-center font-weight-semibold text-3 text-decoration-none pl-0">
+                                                READ MORE +
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <ul class="custom-pagination-style-1 pagination pagination-rounded pagination-md justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                            </ul>
+
+                        </div>
+                        <div class="blog-sidebar col-lg-4 pt-4 pt-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
+                            <aside class="sidebar">
+                                <div class="px-3 mb-4">
+                                    <h3 class="text-color-quaternary text-capitalize font-weight-bold text-5 m-0 mb-3">About The Blog</h3>
+                                    <p class="m-0">Lorem ipsum dolor sit amet, conse elit porta. Vestibulum ante justo, volutpat quis porta diam.</p>
+                                </div>
+                                <div class="py-1 clearfix">
+                                    <hr class="my-2">
+                                </div>
+                                <div class="px-3 mt-4">
+                                    <h3 class="text-color-quaternary text-capitalize font-weight-bold text-5 m-0 mb-3">Recent Posts</h3>
+                                    <div class="pb-2 mb-1">
+                                        <a href="#" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none">10 Jan 2020 <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</a>
+                                        <a href="#" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4">Lorem ipsum dolor sit amet</a>
+                                        <a href="#" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none">10 Jan 2020 <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</a>
+                                        <a href="#" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4">Consectetur adipiscing elit</a>
+                                        <a href="#" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none">10 Jan 2020 <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</a>
+                                        <a href="#" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4">Vivamus sollicitudin nibh luctus</a>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @Html.Partial("_FooterPartial")
+
+    </div>
+
+
+    <!-- Vendor -->
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.appear.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.min.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.easypiechart.js"></script>
+    <script src="~/Scripts/jquery.gmap.js"></script>
+    <script src="~/Scripts/jquery.lazyload.js"></script>
+    <script src="~/Scripts/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+    <script src="~/Scripts/jquery.vide.js"></script>
+    <script src="~/Scripts/vivus.js"></script>
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Scripts/theme.js"></script>
+    <!-- Demo -->
+    <script src="~/Scripts/demo-architecture-2.js"></script>
+    <!-- Theme Custom -->
+    <script src="~/Scripts/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/Scripts/theme.init.js"></script>
+
+</body>
+</html>
