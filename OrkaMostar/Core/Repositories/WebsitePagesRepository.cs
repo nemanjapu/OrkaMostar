@@ -17,7 +17,7 @@ namespace OrkaMostar.Core.Repositories
             _ctx = ctx;
         }
 
-        public void AddPage(WebsitePage page, bool isBlog = false)
+        public void AddPage(WebsitePage page)
         {
             string pageUrlToSave = Helpers.UrlCleaner.CleanUrl(page.MenuName);
             if (GetPageByUrl(pageUrlToSave) != null)
@@ -29,7 +29,7 @@ namespace OrkaMostar.Core.Repositories
             {
                 page.PageUrl = GetPageById(page.ParentId).PageUrl + pageUrlToSave + "/";
             }
-            if (isBlog)
+            if (page.isBlogPost)
             {
                 page.PageUrl = "/novosti/" + pageUrlToSave + "/";
             }
@@ -76,15 +76,25 @@ namespace OrkaMostar.Core.Repositories
             return _ctx.WebsitePages.Where(wp => wp.PageUrl.Equals("/" + url + "/")).FirstOrDefault();
         }
 
-        public IEnumerable<WebsitePage> GetRelatedPages(int id, int parentId)
+        public IEnumerable<WebsitePage> GetBlogPages(int numberOfPosts = 0)
         {
-            if (parentId == 0)
+            if (numberOfPosts == 0)
             {
-                return _ctx.WebsitePages.Where(wp => wp.ParentId == id).AsEnumerable();
+                return _ctx.WebsitePages.Where(wp => wp.isBlogPost).OrderByDescending(wp => wp.DateAdded).AsEnumerable();
             }
             else
             {
-                return _ctx.WebsitePages.Where(wp => wp.ParentId == parentId).AsEnumerable();
+                return _ctx.WebsitePages.Where(wp => wp.isBlogPost).Take(numberOfPosts).OrderBy(wp => wp.DateAdded).AsEnumerable();
+            }
+        }
+
+        public void SetPagesOrder(IEnumerable<WebsitePage> pages)
+        {
+            foreach (var page in pages)
+            {
+                var DbPage = _ctx.WebsitePages.Find(page.Id);
+                DbPage.SortOrder = page.SortOrder;
+                DbPage.ParentId = page.ParentId;
             }
         }
 

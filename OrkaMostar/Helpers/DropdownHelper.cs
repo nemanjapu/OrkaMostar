@@ -11,7 +11,8 @@ namespace OrkaMostar.Helpers
             {
                 new SelectListItem{Text = "Blank Page", Value = "OnlyTextTemplate", Selected = true},
                 new SelectListItem{Text = "Homepage", Value = "Homepage"},
-                new SelectListItem{Text = "Contact", Value = "ContactTemplate"}
+                new SelectListItem{Text = "Contact", Value = "ContactTemplate"},
+                new SelectListItem{Text = "Blog", Value = "BlogTemplate"}
             };
 
             return listPageTemplate;

@@ -1,0 +1,19 @@
+﻿<aside class="sidebar">
+    @*<div class="px-3 mb-4">
+        <h3 class="text-color-quaternary text-capitalize font-weight-bold text-5 m-0 mb-3">About The Blog</h3>
+        <p class="m-0">Lorem ipsum dolor sit amet, conse elit porta. Vestibulum ante justo, volutpat quis porta diam.</p>
+    </div>
+    <div class="py-1 clearfix">
+        <hr class="my-2">
+    </div>*@
+    <div class="px-3 mt-4">
+        <h3 class="text-color-quaternary text-capitalize font-weight-bold text-5 m-0 mb-3">Novosti</h3>
+        <div class="pb-2 mb-1">
+            @foreach (var blog in Model)
+            {
+                <a href="@blog.PageUrl" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none">@blog.DateAdded.ToString("dd. MMMM yyyy.") <span class="opacity-3 d-inline-block px-2">|</span> KVS ORKA</a>
+                <a href="@blog.PageUrl" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4">@blog.PageTitle</a>
+            }
+        </div>
+    </div>
+</aside>

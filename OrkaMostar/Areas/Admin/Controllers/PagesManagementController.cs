@@ -36,12 +36,24 @@ namespace OrkaMostar.Areas.Admin.Controllers
                 SortOrder = m.SortOrder,
                 isHidden = m.isHidden,
                 Template = m.Template == "OnlyTextTemplate" ? "Blank Page" : m.Template,
-                ParentName = m.ParentId > 0 ? _unitOfWork.WebsitePages.GetPageById(m.ParentId).MenuName : ""
+                hasChildren = false
             }).OrderBy(m => m.SortOrder);
+
+            foreach (var page in model)
+            {
+                int pageId = page.Id;
+                foreach (var page2 in model)
+                {
+                    if (page2.ParentId == pageId)
+                    {
+                        page.hasChildren = true;
+                        break;
+                    }
+                }
+            }
 
             return PartialView("~/Areas/Admin/Views/Shared/_PagesListPartial.cshtml", model);
         }
-
 
         public PartialViewResult EditWebsitePage(int id)
         {
@@ -62,7 +74,7 @@ namespace OrkaMostar.Areas.Admin.Controllers
                 ParentId = page.ParentId,
                 SortOrder = page.SortOrder,
                 Template = page.Template,
-                Pages = _unitOfWork.WebsitePages.GetActivePagesByMenuId(page.MenuId).ToList()
+                Pages = _unitOfWork.WebsitePages.GetAllPages(false).ToList()
             };
 
             return PartialView("~/Areas/Admin/Views/Shared/_EditWebsitePagePartial.cshtml", model);

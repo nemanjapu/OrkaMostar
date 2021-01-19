@@ -1,0 +1,144 @@
+﻿/* poppins-300 - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    src: url('/content/fonts/poppins-v15-latin-ext-300.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-300.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-300.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-300.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-300.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-300.svg#Poppins') format('svg');
+}
+/* poppins-regular - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/content/fonts/poppins-v15-latin-ext-regular.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-regular.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-regular.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-regular.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-regular.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-regular.svg#Poppins') format('svg');
+}
+/* poppins-500 - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/content/fonts/poppins-v15-latin-ext-500.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-500.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-500.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-500.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-500.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-500.svg#Poppins') format('svg');
+}
+/* poppins-600 - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/content/fonts/poppins-v15-latin-ext-600.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-600.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-600.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-600.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-600.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-600.svg#Poppins') format('svg');
+}
+/* poppins-700 - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/content/fonts/poppins-v15-latin-ext-700.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-700.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-700.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-700.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-700.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-700.svg#Poppins') format('svg');
+}
+/* poppins-800 - latin-ext */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/content/fonts/poppins-v15-latin-ext-800.eot');
+    src: local(''), url('/content/fonts/poppins-v15-latin-ext-800.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/poppins-v15-latin-ext-800.woff2') format('woff2'),
+    url('/content/fonts/poppins-v15-latin-ext-800.woff') format('woff'),
+    url('/content/fonts/poppins-v15-latin-ext-800.ttf') format('truetype'),
+    url('/content/fonts/poppins-v15-latin-ext-800.svg#Poppins') format('svg');
+}
+/* overpass-200 - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 200;
+    src: url('/content/fonts/overpass-v5-latin-ext-200.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-200.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-200.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-200.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-200.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-200.svg#Overpass') format('svg');
+}
+/* overpass-regular - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/content/fonts/overpass-v5-latin-ext-regular.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-regular.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-regular.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-regular.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-regular.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-regular.svg#Overpass') format('svg');
+}
+/* overpass-600 - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/content/fonts/overpass-v5-latin-ext-600.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-600.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-600.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-600.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-600.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-600.svg#Overpass') format('svg');
+}
+/* overpass-700 - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/content/fonts/overpass-v5-latin-ext-700.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-700.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-700.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-700.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-700.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-700.svg#Overpass') format('svg');
+}
+/* overpass-800 - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/content/fonts/overpass-v5-latin-ext-800.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-800.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-800.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-800.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-800.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-800.svg#Overpass') format('svg');
+}
+/* overpass-900 - latin-ext */
+@font-face {
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 900;
+    src: url('/content/fonts/overpass-v5-latin-ext-900.eot');
+    src: local(''), url('/content/fonts/overpass-v5-latin-ext-900.eot?#iefix') format('embedded-opentype'),
+    url('/content/fonts/overpass-v5-latin-ext-900.woff2') format('woff2'),
+    url('/content/fonts/overpass-v5-latin-ext-900.woff') format('woff'),
+    url('/content/fonts/overpass-v5-latin-ext-900.ttf') format('truetype'),
+    url('/content/fonts/overpass-v5-latin-ext-900.svg#Overpass') format('svg');
+}

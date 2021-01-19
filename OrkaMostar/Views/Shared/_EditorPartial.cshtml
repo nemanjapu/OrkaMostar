@@ -1,0 +1,57 @@
+﻿@{
+    bool isContentOn = (string)(Session["ContentEditor"]) == "yes";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    string activeClass = "";
+    if (isContentOn)
+    {
+        activeClass = "active";
+    }
+    <div class="editor-side">
+        <a href="/admin/dashboard" target="_blank" class="editor-btn" data-toggle="tooltip" data-placement="left" title="Go to dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+        </a>
+        <a href="@Url.Action("ToggleContentEditor","CMS")" class="editor-btn @activeClass" data-toggle="tooltip" data-placement="left" title="Content editor">
+            <i class="far fa-edit"></i>
+        </a>
+    </div>
+
+    <style>
+        .editor-side {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            z-index: 10000;
+            width: 60px;
+            transform: translateY(-50%);
+        }
+
+            .editor-side .editor-btn {
+                width: 60px;
+                height: 60px;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                font-size: 30px;
+                line-height: 60px;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+                .editor-side .editor-btn.active {
+                    background: #808080;
+                }
+    </style>
+}
+
+@if (User.Identity.IsAuthenticated && isContentOn)
+{
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/ckeditor/editor.css" rel="stylesheet" />
+    <script src="~/ckeditor/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/ckeditor/config.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/editor.js"></script>
+}

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*
 Name: 			theme-elements.css
 Written by: 	Okler Themes - (http://www.okler.net)
@@ -6440,10 +6440,10 @@ label.required:after {
 	border-color: #CCC;
 }
 
-.form-control.error {
-	border-color: #a94442;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
+	.form-control.error {
+		border-color: #a94442 !important;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
 
 .form-control.error:focus {
 	border-color: #843534;
@@ -6735,6 +6735,7 @@ label.error {
 	font-size: 0.9em;
 	line-height: 18px;
 	padding: 5px 0 0;
+	display: none !important;
 }
 
 label.error#captcha-error {

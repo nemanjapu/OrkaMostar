@@ -14,10 +14,11 @@ namespace OrkaMostar.Core.Interfaces
         IEnumerable<WebsitePage> GetPagesForSitemap();
         IEnumerable<WebsitePage> GetActivePagesByMenuId(int menuId);
         IEnumerable<WebsitePage> GetHiddenPages(bool isBlog);
-        IEnumerable<WebsitePage> GetRelatedPages(int id, int parentId);
+        IEnumerable<WebsitePage> GetBlogPages(int numberOfPosts);
         WebsitePage GetPageById(int id);
         WebsitePage GetPageByUrl(string url);
-        void AddPage(WebsitePage page, bool isBlog);
+        void SetPagesOrder(IEnumerable<WebsitePage> pages);
+        void AddPage(WebsitePage page);
         void RemovePage(int id);
     }
 }

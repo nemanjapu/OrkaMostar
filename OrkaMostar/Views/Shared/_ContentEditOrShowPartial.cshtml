@@ -1,0 +1,24 @@
+﻿@model  OrkaMostar.Core.ViewModels.PageContentViewModel
+
+<article class="pb-5">
+    @if (User.Identity.IsAuthenticated && (string)(Session["ContentEditor"]) == "yes")
+    {
+        using (Ajax.BeginForm("SaveCMSPageContent", "CMS", null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "toastrSuccess"
+        }))
+        {
+            <div>
+                @Html.HiddenFor(m => Model.Id)
+                @Html.TextAreaFor(m => m.Content1, new { @id = "editorArea" })
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary mt-3">Save</button>
+            </div>
+        }
+    }
+    else
+    {
+        @Html.Raw(Model.Content1)
+    }
+</article>

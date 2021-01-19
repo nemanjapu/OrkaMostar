@@ -1,85 +1,70 @@
-﻿<footer id="footer" class="bg-primary border-0">
-    <div class="container container-lg-custom pt-5 pb-3">
+﻿@model IEnumerable<OrkaMostar.Core.ViewModels.MenuItemsViewModel>
+<footer id="footer" class="bg-primary border-0">
+    <div class="container pt-5 pb-3">
         <div class="row py-5">
-            <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                <h4 class="font-weight-extra-bold text-5 ls-0">Address</h4>
-                <ul class="list list-unstyled">
-                    <li class="mb-1">
-                        12345  Porto Blvd.
-                    </li>
-                    <li class="mb-1">
-                        Suite 1500
-                    </li>
-                    <li>
-                        Los Angeles, California 90000
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                <h4 class="font-weight-extra-bold text-5 ls-0">Contacts</h4>
+            <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+                <h4 class="font-weight-extra-bold text-5 ls-0">Kontakt</h4>
                 <ul class="list-unstyled">
                     <li>
-                        <span class="d-block line-height-2 mb-1">OFFICE</span>
-                        <a href="tel:+1234567890" class="text-color-light text-6 text-lg-4 text-xl-6 font-weight-bold">800-123-4568</a>
+                        <span class="d-block line-height-2 mb-1">TELEFON</span>
+                        <a href="tel:+38761250463" class="text-color-light text-6 text-lg-4 text-xl-6 font-weight-bold">061 250 463</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4 col-lg-2 mb-4 mb-lg-0">
-                <h4 class="font-weight-extra-bold text-5 ls-0">Useful Links</h4>
+            <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
+                <h4 class="font-weight-extra-bold text-5 ls-0">Korisni Linkovi</h4>
                 <ul class="list-unstyled">
-                    <li class="mb-1">
-                        <a href="demo-architecture-2-services.html">Our Services</a>
-                    </li>
-                    <li class="mb-1">
-                        <a href="#">Payment Methods</a>
-                    </li>
-                    <li class="mb-1">
-                        <a href="#">Services Guide</a>
-                    </li>
-                    <li>
-                        <a href="#">FAQs</a>
-                    </li>
+                    @{
+                        int counter = 1;
+                    }
+                    @foreach (var page in Model)
+                    {
+                        if (counter < 9)
+                        {
+                            string pageNewTab = "";
+                            string pageUrl = "";
+                            if (page.OpenPageInNewTab)
+                            {
+                                pageNewTab = "target='_blank'";
+                            }
+                            else
+                            {
+                                pageNewTab = "";
+                            }
+                            if (string.IsNullOrEmpty(page.PageExternalUrl))
+                            {
+                                pageUrl = page.PageUrl;
+                            }
+                            else
+                            {
+                                pageUrl = page.PageExternalUrl;
+                            }
+                            <li class="mb-1">
+                                <a href="@pageUrl" @pageNewTab>@page.MenuName</a>
+                            </li>
+
+                            if (counter == 4)
+                            {
+                                @Html.Raw("</ul></div>")
+                                @Html.Raw("<div class='col-sm-6 col-lg-3 mb-4 mb-md-0'>")
+                                @Html.Raw("<h4 class='font-weight-extra-bold text-5 ls-0 invisible'>Korisni Linkovi</h4>")
+                                @Html.Raw("<ul class='list-unstyled'>")
+                            }
+
+                            counter = counter + 1;
+                        }
+
+                    }
                 </ul>
             </div>
-            <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
-                <h4 class="font-weight-extra-bold text-5 ls-0">Services</h4>
-                <ul class="list-unstyled">
-                    <li class="mb-1">
-                        <a href="demo-architecture-2-services-detail.html">Design & Planning</a>
-                    </li>
-                    <li class="mb-1">
-                        <a href="demo-architecture-2-services-detail.html">Interior Design</a>
-                    </li>
-                    <li class="mb-1">
-                        <a href="demo-architecture-2-services-detail.html">Exerior Design</a>
-                    </li>
-                    <li>
-                        <a href="demo-architecture-2-services-detail.html">Construction Drawings</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
-                <h4 class="font-weight-extra-bold text-5 ls-0">About</h4>
-                <ul class="list-unstyled">
-                    <li class="mb-1">
-                        <a href="demo-architecture-2-about-us.html">About Us</a>
-                    </li>
-                    <li>
-                        <a href="demo-architecture-2-contact.html">Send a Message</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-lg-2">
-                <h4 class="font-weight-extra-bold text-5 ls-0">Follow Us</h4>
+            <div class="col-sm-6 col-lg-3">
+                <h4 class="font-weight-extra-bold text-5 ls-0">Pratite Nas</h4>
                 <ul class="social-icons social-icons-clean social-icons-icon-light">
                     <li>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/klubvodenihsportova.orka/"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li>
-                        <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/orka_mostar/"><i class="fab fa-instagram"></i></a>
                     </li>
                 </ul>
             </div>
@@ -94,10 +79,10 @@
             </div>
             <div class="row py-5 my-3">
                 <div class="col text-center">
-                    <a href="demo-architecture-2.html" class="d-inline-block mb-3">
-                        <img alt="Porto" width="115" height="30" src="~/Content/img/logo.png">
+                    <a href="/" class="d-inline-block mb-3">
+                        <img alt="KVS Orka Mostar" width="65" height="65" src="~/Content/img/logo.png">
                     </a>
-                    <p class="text-3 mb-0">Porto Architecture 2. © 2020. All Rights Reserved</p>
+                    <p class="text-3 mb-0">Powered by <a href="https://www.struix.co" target="_blank">Struix</a> </p>
                 </div>
             </div>
         </div>

@@ -1,0 +1,192 @@
+﻿@model IEnumerable<string>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html class="fixed">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    @Styles.Render("~/Content/admin/FontAwesomeCss")
+    @Styles.Render("~/Content/AdminCSS")
+
+    <!-- Head Libs -->
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/fileeditor.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="body">
+
+        <!-- start: header -->
+        <header class="header">
+            <div class="logo-container">
+                <a href="/admin/dashboard" class="logo">
+                    <img src="~/Areas/Admin/Content/images/logo-dark.png" height="35" alt="KVS Orka Mostar" />
+                </a>
+                <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+                    <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
+            </div>
+        </header>
+        <!-- end: header -->
+
+        <div class="inner-wrapper">
+            <!-- start: sidebar -->
+            <aside id="sidebar-left" class="sidebar-left">
+
+                <div class="nano">
+                    <div class="nano-content">
+                        <input class="btn btn-block btn-primary btn-md mx-auto pt-2 pb-2 mt-4 text-3 w-75" type="file" id="imageUploadForm" name="image" multiple />
+                    </div>
+
+                    <script>
+                        // Maintain Scroll Position
+                        if (typeof localStorage !== 'undefined') {
+                            if (localStorage.getItem('sidebar-left-position') !== null) {
+                                var initialPosition = localStorage.getItem('sidebar-left-position'),
+                                    sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+
+                                sidebarLeft.scrollTop = initialPosition;
+                            }
+                        }
+                    </script>
+
+
+                </div>
+
+            </aside>
+            <!-- end: sidebar -->
+            <section role="main" class="content-body">
+                <header class="page-header">
+                    <h2>Files</h2>
+                </header>
+                <div class="row">
+                    @foreach (var fullPath in Model)
+                    {
+                        var fileName = Path.GetFileName(fullPath);
+                        var fileExt = Path.GetExtension(fullPath);
+                        bool isImage = false;
+                        if (string.Compare(fileExt, ".jpg") == 0 || string.Compare(fileExt, ".jpeg") == 0 || string.Compare(fileExt, ".png") == 0)
+                        {
+                            isImage = true;
+                        }
+                        <div class="isotope-item col-sm-6 col-md-4 col-lg-3">
+                            <div class="thumbnail">
+                                <div class="thumb-preview">
+                                    <div class="file-con">
+                                        @if (isImage)
+                                        {
+                                            <img src="~/DynamicContent/UploadedImages/@fileName" class="img-fluid" alt="Project">
+                                        }
+                                        else
+                                        {
+                                            <span>@fileExt</span>
+                                        }
+                                    </div>
+                                    <div class="mg-thumb-options pt-3">
+                                        <div class="mg-toolbar clearfix">
+                                            <div class="mg-option float-left">
+                                                <a class="select-image" href="javascript:returnFileUrl('/DynamicContent/UploadedImages/@fileName', '@fileName');" data-url="">SELECT</a>
+                                            </div>
+                                            <div class="mg-group float-right">
+                                                <a class="delete-image-btn" href="@fileName">DELETE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="mg-title font-weight-semibold">@fileName</h5>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Vendor -->
+    @Scripts.Render("~/bundles/AdminScripts")
+    <script>
+        // Helper function to get parameters from the query string.
+        function getUrlParam(paramName) {
+            var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
+            var match = window.location.search.match(reParam);
+
+            return (match && match.length > 1) ? match[1] : null;
+        }
+        // Simulate user action of selecting a file to be returned to CKEditor.
+        function returnFileUrl(elem, imgname) {
+
+            var funcNum = getUrlParam('CKEditorFuncNum');
+            var fileUrl = elem;
+            window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl, function () {
+                // Get the reference to a dialog window.
+                var dialog = this.getDialog();
+                // Check if this is the Image Properties dialog window.
+                if (dialog.getName() == 'image') {
+                    // Get the reference to a text field that stores the "alt" attribute.
+                    var element = dialog.getContentElement('info', 'txtAlt');
+                    // Assign the new value.
+                    if (element)
+                        element.setValue(imgname);
+                }
+                // Return "false" to stop further execution. In such case CKEditor will ignore the second argument ("fileUrl")
+                // and the "onSelect" function assigned to the button that called the file manager (if defined).
+                // return false;
+            });
+            window.close();
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#imageUploadForm").on('change', function () {
+                var formData = new FormData();
+                var totalFiles = document.getElementById("imageUploadForm").files.length;
+                for (var i = 0; i < totalFiles; i++) {
+                    var file = document.getElementById("imageUploadForm").files[i];
+                    formData.append("imageUploadForm", file);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '/FileEditor/Upload',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false
+                }).done(function () {
+                    window.location.reload();
+                }).fail(function (xhr, status, errorThrown) {
+                    window.location.reload();
+                });
+            });
+            $(".delete-image-btn").on('click', function (e) {
+                e.preventDefault();
+                var imageName = $(this).attr('href');
+                $.ajax({
+                    type: "POST",
+                    url: '/FileEditor/Delete',
+                    ajaxasync: true,
+                    data: { fileName: imageName },
+                }).done(function () {
+                    window.location.reload();
+                }).fail(function (xhr, status, errorThrown) {
+                    alert(status);
+                    alert(errorThrown);
+                    window.location.reload();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

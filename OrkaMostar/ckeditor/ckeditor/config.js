@@ -10,7 +10,8 @@ CKEDITOR.editorConfig = function( config ) {
     config.extraPlugins = 'sourcedialog';
     config.allowedContent = true;
     config.removeFormatAttributes = '';
-    config.filebrowserBrowseUrl = '/imageseditor/imagesmanager/selectimage';
+    config.filebrowserBrowseUrl = '/FileEditor/selectimage';
+    config.fullPage = true;
 };
 
 CKEDITOR.on("instanceReady", function (event) {

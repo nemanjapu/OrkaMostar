@@ -32,9 +32,14 @@ namespace OrkaMostar.Areas.Admin.ViewModels
         public string ImageToShow { get; set; }
         public List<SelectListItem> PageTemplateDropdown { get; set; }
         public DateTime DateAdded { get; set; }
+        public bool isBlogPost { get; set; }
         [AllowHtml]
         public string Content1 { get; set; }
 
-        public EditWebsitePageAdminViewModel() => PageTemplateDropdown = DropdownHelper.GetPageTemplateList();
+        public EditWebsitePageAdminViewModel()
+        {
+            PageTemplateDropdown = DropdownHelper.GetPageTemplateList();
+            ImageToShow = "Areas/Admin/Content/images/upload-icon.png";
+        }
     }
 }

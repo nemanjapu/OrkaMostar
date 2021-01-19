@@ -14,6 +14,8 @@ namespace OrkaMostar
                        "~/Scripts/jquery-{version}.js",
                        "~/Scripts/jquery.validate*",
                        "~/Scripts/jquery.unobtrusive-ajax.js",
+                       "~/Scripts/jquery-ui-1.12.1.js",
+                       "~/Scripts/jquery.mjs.nestedSortable.js",
                        "~/Areas/Admin/Content/js/jquery.browser.mobile.js",
                        "~/Areas/Admin/Content/js/popper.min.js",
                        "~/Areas/Admin/Content/js/bootstrap.js",

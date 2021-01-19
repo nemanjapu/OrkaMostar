@@ -2128,7 +2128,6 @@ select.form-control-sm, select.form-control-lg {
 /* Form - Custom Fields */
 .required {
 	display: inline-block;
-	color: #d2322d;
 	font-size: 0.8em;
 	font-weight: bold;
 	position: relative;

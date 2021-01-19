@@ -113,3 +113,21 @@
 .table th, .table td{
     vertical-align: middle;
 }
+
+.placeholder{
+    /*padding: 12px;*/
+    border: 1px dashed #ccc;
+}
+
+ul.sortable,
+ul.sortable ul {
+    list-style-type: none;
+}
+
+    /*ul.sortable ul{
+        margin-top: 10px;
+    }*/
+
+.sortable-handle{
+    cursor: grab;
+}

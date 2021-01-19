@@ -97,30 +97,6 @@
 
 }).apply(this, [jQuery]);
 
-// Before / After
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginBeforeAfter'])) {
-
-		$(function() {
-			$('[data-plugin-before-after]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginBeforeAfter(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
 // Carousel
 (function($) {
 
@@ -144,54 +120,6 @@
 				} else {
 					$this.themePluginCarousel(opts);
 				}
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Chart.Circular
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginChartCircular'])) {
-
-		$(function() {
-			$('[data-plugin-chart-circular]:not(.manual), .circular-bar-chart:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginChartCircular(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Countdown
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginCountdown'])) {
-
-		$(function() {
-			$('[data-plugin-countdown]:not(.manual), .countdown').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginCountdown(opts);
 			});
 		});
 
@@ -223,30 +151,6 @@
 
 }).apply(this, [jQuery]);
 
-// Float Element
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginFloatElement'])) {
-
-		$(function() {
-			$('[data-plugin-float-element]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginFloatElement(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
 // Animated Icon
 (function($) {
 
@@ -270,30 +174,6 @@
 				
 			});
 		});
-	}
-
-}).apply(this, [jQuery]);
-
-// Lazy Load
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginLazyLoad'])) {
-
-		$(function() {
-			$('[data-plugin-lazyload]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginLazyLoad(opts);
-			});
-		});
-
 	}
 
 }).apply(this, [jQuery]);
@@ -339,30 +219,6 @@
 					opts = pluginOptions;
 
 				$this.themePluginMasonry(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Match Height
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginMatchHeight'])) {
-
-		$(function() {
-			$('[data-plugin-match-height]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginMatchHeight(opts);
 			});
 		});
 
@@ -418,247 +274,6 @@
 
 }).apply(this, [jQuery]);
 
-// Read More
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginReadMore'])) {
-
-		$(function() {
-			$('[data-plugin-readmore]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginReadMore(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Revolution Slider
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginRevolutionSlider'])) {
-
-		$(function() {
-			$('[data-plugin-revolution-slider]:not(.manual), .slider-container .slider:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginRevolutionSlider(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Scrollable
-(function($) {
-
-	'use strict';
-
-	if ( $.isFunction($.fn[ 'nanoScroller' ]) ) {
-
-		$(function() {
-			$('[data-plugin-scrollable]').each(function() {
-				var $this = $( this ),
-					opts = {};
-
-				var pluginOptions = $this.data('plugin-options');
-				if (pluginOptions) {
-					opts = pluginOptions;
-				}
-
-				$this.themePluginScrollable(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Section Scroll
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginSectionScroll'])) {
-
-		$(function() {
-			$('[data-plugin-section-scroll]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginSectionScroll(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Sort
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginSort'])) {
-
-		$(function() {
-			$('[data-plugin-sort]:not(.manual), .sort-source:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginSort(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Star Rating
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginStarRating'])) {
-
-		$(function() {
-			$('[data-plugin-star-rating]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginStarRating(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Sticky
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginSticky'])) {
-
-		$(function() {
-			$('[data-plugin-sticky]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginSticky(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Toggle
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginToggle'])) {
-
-		$(function() {
-			$('[data-plugin-toggle]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginToggle(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Tweets
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginTweets'])) {
-
-		$(function() {
-			$('[data-plugin-tweets]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginTweets(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
-// Video Background
-(function($) {
-
-	'use strict';
-
-	if ($.isFunction($.fn['themePluginVideoBackground'])) {
-
-		$(function() {
-			$('[data-plugin-video-background]:not(.manual)').each(function() {
-				var $this = $(this),
-					opts;
-
-				var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginVideoBackground(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [jQuery]);
-
 // Commom Partials
 (function($) {
 
@@ -672,21 +287,6 @@
 	// Nav Menu
 	if (typeof theme.Nav !== 'undefined') {
 		theme.Nav.initialize();
-	}
-
-	// Search
-	if (typeof theme.Search !== 'undefined') {
-		theme.Search.initialize();
-	}
-
-	// Newsletter
-	if (typeof theme.Newsletter !== 'undefined') {
-		theme.Newsletter.initialize();
-	}
-
-	// Account
-	if (typeof theme.Account !== 'undefined') {
-		theme.Account.initialize();
 	}
 
 }).apply(this, [jQuery]);

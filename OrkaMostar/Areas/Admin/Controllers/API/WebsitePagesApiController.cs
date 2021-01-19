@@ -21,37 +21,49 @@ namespace OrkaMostar.Areas.Admin.Controllers.API
             _unitOfWork = unitOfWork;
         }
 
+        [AcceptVerbs("GET", "POST")]
         [ResponseType(typeof(WebsitePage))]
-        public IHttpActionResult AddNewWebsitePage(WebsitePage websitePage, bool isBlog)
+        public IHttpActionResult AddNewWebsitePage(WebsitePage websitePage)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _unitOfWork.WebsitePages.AddPage(websitePage, false);
+            _unitOfWork.WebsitePages.AddPage(websitePage);
             _unitOfWork.Complete();
 
             return CreatedAtRoute("DefaultApi", new { id = websitePage.Id }, websitePage);
         }
 
-        //[HttpPost]
-        //public IHttpActionResult DeleteWebsitePage(int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
+        [AcceptVerbs("GET", "POST")]
+        [HttpPost]
+        public IHttpActionResult DeleteWebsitePage(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-        //    _unitOfWork.WebsitePages.RemovePage(id);
-        //    _unitOfWork.Complete();
+            _unitOfWork.WebsitePages.RemovePage(id);
+            _unitOfWork.Complete();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        [HttpPost]
+        public IHttpActionResult SetPagesOrder(IEnumerable<WebsitePage> pages)
+        {
+            _unitOfWork.WebsitePages.SetPagesOrder(pages);
+            _unitOfWork.Complete();
+
+            return Ok();
+        }
 
         public IQueryable<WebsitePage> GetWebsitePagesForParent(int id)
         {
-            return _unitOfWork.WebsitePages.GetActivePagesByMenuId(id).AsQueryable();
+            return _unitOfWork.WebsitePages.GetAllPages(false).AsQueryable();
         }
     }
 }

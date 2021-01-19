@@ -1,0 +1,75 @@
+﻿@using System.Text.RegularExpressions;
+@{
+
+    @model  OrkaMostar.Core.ViewModels.PageContentViewModel
+    Layout = null;
+    string canonicalUrl = "https://www.orkamostar.ba/" + Model.PageUrl;
+}
+
+<!DOCTYPE html>
+<html lang="bs">
+<head prefix="og: http://ogp.me/ns#">
+    @{
+        Html.RenderPartial("_HeadPartial");
+    }
+    <meta property="og:image" content="https://www.orkamostar.ba/Content/images/logo.png">
+    <meta property="og:image:type" content="image/png">
+</head>
+<body class="loading-overlay-showing" data-loading-overlay data-plugin-page-transition>
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <div class="body">
+        @Html.Action("GetTopMenuItems", "CMS")
+
+        <div role="main" class="main">
+
+            @{
+                Html.RenderPartial("_InnerPagesHeader");
+            }
+
+            <div class="custom-page-wrapper pt-5">
+                <div class="spacer py-4 my-5"></div>
+                <div class="container container-lg-custom">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1600">
+
+                            @{
+                                Html.RenderPartial("_ContentEditOrShowPartial", Model);
+                            }
+
+                        </div>
+                        <div class="blog-sidebar col-lg-4 pt-4 pt-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
+                            @Html.Partial("_SideBarPartial", Model.BlogPages.Take(3))
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @Html.Action("GetFooter", "CMS")
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.appear.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/vivus.js"></script>
+    <script src="~/Scripts/theme.js"></script>
+    <script src="~/Scripts/demo-architecture-2.js"></script>
+    <script src="~/Scripts/theme.init.js"></script>
+    @{Html.RenderPartial("_EditorPartial");}
+
+</body>
+</html>

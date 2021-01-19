@@ -8429,7 +8429,6 @@ select.form-control-sm, select.form-control-lg {
 /* Form - Custom Fields */
 .required {
 	display: inline-block;
-	color: #d2322d;
 	font-size: 0.8em;
 	font-weight: bold;
 	position: relative;
@@ -14336,11 +14335,27 @@ p.drop-caps.drop-caps-style-2:first-letter {
 @media only screen and (max-width: 767px) {
 	.userbox .name,
 	.userbox .role {
-		max-width: 68px;
+		/*max-width: 68px;*/
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
+	.mjs-nestedSortable-leaf .list-group-item > div:first-child {
+		white-space: nowrap;
+		/*max-width: 190px;*/
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.mjs-nestedSortable-leaf .list-group-item > div:nth-child(2) {
+		width: 120px;
+	}
+	#editPageCon{
+		padding-top: 20px;
+	}
+		#editPageCon .container-fluid {
+			padding-left: 0;
+			padding-right: 0;
+		}
 }
 /* Userbox - Open */
 .userbox.show > a {

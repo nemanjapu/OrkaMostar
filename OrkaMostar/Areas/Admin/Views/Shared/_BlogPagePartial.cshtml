@@ -1,25 +1,47 @@
 ﻿@model OrkaMostar.Areas.Admin.ViewModels.EditWebsitePageAdminViewModel
 
-@using (Ajax.BeginForm("SaveEditedPage", "PagesManagement", null, new AjaxOptions
+@{ 
+    var pageAction = "SaveNewBlog"; 
+    if (Model.Id > 0)
+    {
+        pageAction = "SaveEditedBlog";
+    }
+}
+
+@using (Ajax.BeginForm(pageAction, "NewsManagement", null, new AjaxOptions
 {
     HttpMethod = "POST",
     OnSuccess = "editPageFormSaved"
-}))
+}, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="container-fluid">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
         <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Page top image:</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.File, new { @class = "form-control image-input-field", type = "file", id = "PageImageInput", data_multiple_caption = "" })
+                        <label class="image-input-label" for="PageImageInput">
+                            <figure>
+                                <img id="preview-image-page" src="~/@Model.ImageToShow" alt="Preview Image" />
+                            </figure>
+                            <span>Choose a file…</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
             <div class="col-xl-6">
                 <div class="form-group">
                     <label class="control-label" for="MenuName">News Title</label>
                     @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.MenuName, "", new { @class = "text-danger" })
                 </div>
-
+            </div>
+            <div class="col-xl-6">
                 <div class="form-group">
                     <label class="control-label" for="PageTitle">Page Title</label>
                     @Html.EditorFor(model => model.PageTitle, new { htmlAttributes = new { @class = "form-control" } })
@@ -40,9 +62,9 @@
                     @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 pt-3">
                 <div class="form-group">
-                    <label class="control-label" for="MetaDescription">Content</label>
+                    <label class="control-label" for="Content1">Content</label>
                     @Html.TextAreaFor(model => model.Content1, new { @class = "form-control" })
                 </div>
             </div>

@@ -7,16 +7,12 @@
                 </div>
                 <h5 class="text-center">Are you sure?</h5>
             </div>
-            @using (Html.BeginForm("DeleteWebsitePage", "PagesManagement", FormMethod.Post))
-            {
+            <div id="DeletePageForm">
                 <div class="modal-footer">
-
-                    @Html.AntiForgeryToken()
-                    <input id="PageIdInput" type="hidden" name="PageIdInput" value="" />
-                    <button type="submit" class="btn btn-danger m-auto">Delete</button>
+                    <a data-page-id-to-delete="" id="deletePageConfirm" class="btn btn-danger m-auto text-white">Delete</a>
                     <button type="button" class="btn btn-light m-auto" data-dismiss="modal">Cancel</button>
                 </div>
-            }
+            </div>
         </div>
     </div>
 </div>

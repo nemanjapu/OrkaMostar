@@ -3,12 +3,14 @@ using OrkaMostar.Core;
 using OrkaMostar.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace OrkaMostar.Areas.Admin.Controllers
 {
+    [Authorize]
     public class NewsManagementController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -30,7 +32,8 @@ namespace OrkaMostar.Areas.Admin.Controllers
             {
                 Id = m.Id,
                 DateAdded = m.DateAdded,
-                isHidden = m.isHidden
+                isHidden = m.isHidden,
+                MenuName = m.MenuName
             }).OrderBy(m => m.DateAdded);
 
             return PartialView("~/Areas/Admin/Views/Shared/_BlogsListPartial.cshtml", model);
@@ -42,7 +45,7 @@ namespace OrkaMostar.Areas.Admin.Controllers
 
             var model = new EditWebsitePageAdminViewModel
             {
-                ImageToShow = string.IsNullOrEmpty(page.ImagePath) ? "Areas/Admin/Content/images/upload-icon.png" : page.ImagePath + "/" + page.ImageName,
+                ImageToShow = string.IsNullOrEmpty(page.ImageName) ? "Areas/Admin/Content/images/upload-icon.png" : page.ImagePath + "/" + page.ImageName,
                 Id = page.Id,
                 isHidden = page.isHidden,
                 MenuName = page.MenuName,
@@ -51,16 +54,15 @@ namespace OrkaMostar.Areas.Admin.Controllers
                 PageTitle = page.PageTitle,
                 PageUrl = page.PageUrl,
                 Template = page.Template,
-                Pages = _unitOfWork.WebsitePages.GetActivePagesByMenuId(page.MenuId).ToList()
+                Content1 = page.Content1
             };
 
-            return PartialView("~/Areas/Admin/Views/Shared/_EditWebsitePagePartial.cshtml", model);
+            return PartialView("~/Areas/Admin/Views/Shared/_BlogPagePartial.cshtml", model);
         }
 
         public PartialViewResult AddNewBlogPage()
         {
             var model = new EditWebsitePageAdminViewModel();
-
             return PartialView("~/Areas/Admin/Views/Shared/_BlogPagePartial.cshtml", model);
         }
 
@@ -78,9 +80,17 @@ namespace OrkaMostar.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public void SaveNewBlog(EditWebsitePageAdminViewModel blog)
         {
+            var path = "~/DynamicContent/BlogImages";
+            var pathToSave = "DynamicContent/BlogImages";
+            var imageNameToSave = "";
+            if (blog.File != null)
+            {
+                imageNameToSave = blog.File.FileName;
+                blog.File.SaveAs(Path.Combine(Server.MapPath(path), blog.File.FileName));
+            }
             var blogDb = new WebsitePage()
             {
-                DateAdded = blog.DateAdded == null ? DateTime.Now : blog.DateAdded,
+                DateAdded = DateTime.Now,
                 Content1 = blog.Content1,
                 isBlogPost = true,
                 MetaKeywords = blog.MetaKeywords,
@@ -88,29 +98,36 @@ namespace OrkaMostar.Areas.Admin.Controllers
                 MenuName = blog.MenuName,
                 PageTitle = blog.MenuName,
                 Template = "BlogPostTemplate",
-                isHidden = blog.isHidden
+                isHidden = blog.isHidden,
+                MenuId = 1,
+                ImageName = imageNameToSave,
+                ImagePath = pathToSave
             };
 
+
+            _unitOfWork.WebsitePages.AddPage(blogDb);
             _unitOfWork.Complete();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void SaveEditedBlog(EditWebsitePageAdminViewModel page)
+        public void SaveEditedBlog(EditWebsitePageAdminViewModel blog)
         {
-            var blogDb = _unitOfWork.WebsitePages.GetPageById(page.Id);
+            var blogDb = _unitOfWork.WebsitePages.GetPageById(blog.Id);
+            var path = "~/DynamicContent/BlogImages";
+            var pathToSave = "DynamicContent/BlogImages";
 
-            blogDb.MenuName = page.MenuName;
-            blogDb.MetaDescription = page.MetaDescription;
-            blogDb.MetaKeywords = page.MetaKeywords;
-            blogDb.OpenPageInNewTab = page.OpenPageInNewTab;
-            blogDb.PageExternalUrl = page.PageExternalUrl;
-            blogDb.PageTitle = page.PageTitle;
-            blogDb.PageUrl = page.PageUrl;
-            blogDb.ParentId = page.ParentId;
-            blogDb.SortOrder = page.SortOrder;
-            blogDb.isHidden = page.isHidden;
-            blogDb.Template = page.Template;
+            blogDb.MenuName = blog.MenuName;
+            blogDb.PageTitle = blog.PageTitle;
+            blogDb.MetaDescription = blog.MetaDescription;
+            blogDb.MetaKeywords = blog.MetaKeywords;
+            blogDb.Content1 = blog.Content1;
+            if (blog.File != null)
+            {
+                blogDb.ImageName = blog.File.FileName;
+                blogDb.ImagePath = pathToSave;
+                blog.File.SaveAs(Path.Combine(Server.MapPath(path), blog.File.FileName));
+            }
 
             _unitOfWork.Complete();
         }

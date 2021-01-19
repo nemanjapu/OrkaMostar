@@ -1,0 +1,85 @@
+﻿@model OrkaMostar.Areas.Admin.ViewModels.GlobalValuesViewModel
+@{
+    ViewBag.Title = "Global Settings";
+}
+
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Dashboard</h2>
+    </header>
+
+    <!-- start: page -->
+    @*@using (Html.BeginForm("SaveSettings", "GlobalSettings", FormMethod.Post))
+        {*@
+    @using (Ajax.BeginForm("SaveSettings", "GlobalSettings", null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "toastrSuccess"
+    }))
+    {
+        <div class="row">
+            @*<div class="col-sm-6">
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="form-group">
+                        <label>Mobile phone number:</label>
+                        @Html.TextBoxFor(m => m.MobilePhone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MobilePhone)
+                    </div>
+                    <div class="form-group">
+                        <label>Office phone number:</label>
+                        @Html.TextBoxFor(m => m.OfficePhone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.OfficePhone)
+                    </div>
+                    <div class="form-group">
+                        <label>Address:</label>
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmailAddress)
+                    </div>
+                </div>*@
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Facebook link:</label>
+                    @Html.TextBoxFor(m => m.FacebookLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FacebookLink)
+                </div>
+                <div class="form-group">
+                    <label>Instagram link:</label>
+                    @Html.TextBoxFor(m => m.InstagramLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.InstagramLink)
+                </div>
+                <div class="form-group">
+                    <label>Twitter link:</label>
+                    @Html.TextBoxFor(m => m.TwitterLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TwitterLink)
+                </div>
+                <div class="form-group">
+                    <label>Pinterest link:</label>
+                    @Html.TextBoxFor(m => m.PinterestLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PinterestLink)
+                </div>
+                <div class="form-group">
+                    <label>Linkedin link:</label>
+                    @Html.TextBoxFor(m => m.LinkedinLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LinkedinLink)
+                </div>
+                <div class="form-group">
+                    <label>Youtube link:</label>
+                    @Html.TextBoxFor(m => m.YoutubeLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.YoutubeLink)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-block btn-success btn-save-listing"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    }
+    <!-- end: page -->
+</section>

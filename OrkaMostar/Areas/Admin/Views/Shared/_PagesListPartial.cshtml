@@ -1,52 +1,85 @@
 ﻿@model IEnumerable<OrkaMostar.Areas.Admin.ViewModels.WebsitePagesAdminViewModel>
 
-<section class="card">
+<section class="card p-0">
     <header class="card-header">
-        <div class="card-actions">
-            <a href="#" class="card-action card-action-toggle" data-card-toggle=""></a>
-            <a href="#" class="card-action card-action-dismiss" data-card-dismiss=""></a>
-        </div>
-
         <h2 class="card-title">All pages</h2>
     </header>
-    <div class="card-body" style="display: block;">
-        <table class="table table-responsive-md mb-0">
-            <thead>
-                <tr>
-                    <th>Page Name</th>
-                    <th>Parent</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var page in Model)
+    <div class="card-body p-0" style="display: block;">
+        <ul class="list-group sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+            @foreach (var page in Model)
+            {
+                if (page.ParentId == 0)
                 {
-                    <tr>
-                        <td>
-                            @{var hidden = "";
-                                if (page.isHidden)
+                    var hidden = "";
+                    if (page.isHidden)
+                    {
+                        hidden = "(Hidden)";
+                    }
+                    if (!page.hasChildren)
+                    {
+                        <li class="mjs-nestedSortable-leaf">
+                            <div class="d-flex justify-content-between align-items-center w-100 list-group-item pl-0" data-id="@page.Id" data-parent-id="0">
+                                <div>
+                                    <span class="sortable-handle p-4"><i class="fas fa-arrows-alt"></i></span>
+                                    @page.MenuName @hidden
+                                </div>
+                                <div>
+                                    <a class="edit-page-trigger cur-pointer btn btn-primary text-white mr-3" data-page-id="@page.Id">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-white" href="javascript:void(0);" id="DeletePageButton" data-pageid="@page.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                            @foreach (var subpage in Model)
+                            {
+                                if (subpage.ParentId == page.Id)
                                 {
-                                    hidden = "(Hidden)";
+                                    <ul class="list-group ml-5">
+                                        <li class="mjs-nestedSortable-leaf">
+                                            <div class="d-flex justify-content-between align-items-center w-100 list-group-item pl-0" data-id="@subpage.Id" data-parent-id="@page.Id">
+                                                <div>
+                                                    <span class="sortable-handle p-4"><i class="fas fa-arrows-alt"></i></span>
+                                                    @subpage.MenuName @hidden
+                                                </div>
+                                                <div>
+                                                    <a class="edit-page-trigger cur-pointer btn btn-primary text-white mr-3" data-page-id="@subpage.Id">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a class="btn btn-danger text-white" href="javascript:void(0);" id="DeletePageButton" data-pageid="@subpage.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 }
                             }
-                            @page.MenuName @hidden
-                        </td>
-                        <td>@page.ParentName</td>
-                        <td class="actions">
-                            <a class="edit-page-trigger cur-pointer btn btn-primary text-white mr-3" data-page-id="@page.Id">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a class="btn btn-danger text-white" href="javascript:void(0);" id="DeletePageButton" data-pageid="@page.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="mjs-nestedSortable-leaf">
+                            <div class="d-flex justify-content-between align-items-center w-100 list-group-item pl-0" data-id="@page.Id" data-parent-id="0">
+                                <div>
+                                    <span class="sortable-handle p-4"><i class="fas fa-arrows-alt"></i></span>
+                                    @page.MenuName @hidden
+                                </div>
+                                <div>
+                                    <a class="edit-page-trigger cur-pointer btn btn-primary text-white mr-3" data-page-id="@page.Id">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-white" href="javascript:void(0);" id="DeletePageButton" data-pageid="@page.Id" data-toggle="modal" data-target="#DeletePageModal"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
                 }
-            </tbody>
-        </table>
-        <div class="pt-3">
-            <button type="button" data-menuid="1" class="btn btn-primary d-block add-page-modal-btn" data-toggle="modal" data-target="#AddNewWebsitePage">
-                Add New Page
-            </button>
-        </div>
+
+            }
+        </ul>
+    </div>
+    <div class="pt-3">
+        <button type="button" data-menuid="1" class="btn btn-primary d-block add-page-modal-btn" data-toggle="modal" data-target="#AddNewWebsitePage">
+            Add New Page
+        </button>
     </div>
 </section>

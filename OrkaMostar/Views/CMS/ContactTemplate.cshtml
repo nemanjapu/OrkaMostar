@@ -1,17 +1,122 @@
-﻿
-@{
+﻿@{
+    @model  OrkaMostar.Core.ViewModels.PageContentViewModel
     Layout = null;
+    string canonicalUrl = "https://www.orkamostar.ba/" + Model.PageUrl;
 }
 
 <!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ContactTemplate</title>
+<html lang="bs">
+<head prefix="og: http://ogp.me/ns#">
+    @{
+        Html.RenderPartial("_HeadPartial");
+    }
+    <meta property="og:image" content="https://www.orkamostar.ba/Content/images/logo.png">
+    <meta property="og:image:type" content="image/png">
 </head>
-<body>
-    <div> 
+<body class="loading-overlay-showing" data-loading-overlay data-plugin-page-transition>
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </div>
+
+    <div class="body">
+        @Html.Action("GetTopMenuItems", "CMS")
+
+        <div role="main" class="main">
+
+            @{
+                Html.RenderPartial("_InnerPagesHeader");
+            }
+
+            <div class="custom-page-wrapper pt-5">
+                <div class="spacer py-4 my-5"></div>
+                <div class="container container-lg-custom">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1600">
+
+                            @{
+                                Html.RenderPartial("_ContentEditOrShowPartial", Model);
+                            }
+                            <form class="contact-form custom-form-style-1 appear-animation" action="/cms/sendmessage" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#MessageCont" id="contactForm" method="post" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2800">
+                                <div id="MessageCont">
+                                    <div class="form-row">
+                                        <div class="form-group col mb-3">
+                                            <input type="text" value="" maxlength="100" class="form-control border-radius-0" name="FirstName" id="FirstName" placeholder="Ime *">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col mb-3">
+                                            <input type="text" value="" maxlength="100" class="form-control border-radius-0" name="LastName" id="LastName" placeholder="Prezime *">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col mb-3">
+                                            <input type="email" value="" maxlength="100" class="form-control border-radius-0" name="EmailAddress" id="EmailAddress" placeholder="E-mail *">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col mb-3">
+                                            <input type="text" value="" maxlength="100" class="form-control border-radius-0" name="PhoneNumber" id="PhoneNumber" placeholder="Broj telefona *">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col mb-4">
+                                            <textarea maxlength="5000" rows="5" class="form-control border-radius-0" name="Note" id="Note" placeholder="Poruka *"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col mb-0">
+                                            <button type="submit" class="btn btn-primary custom-btn-style-1 font-weight-bold text-3 px-5 py-3" data-loading-text="Loading...">POŠALJI</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="blog-sidebar col-lg-4 pt-4 pt-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
+                            @Html.Partial("_SideBarPartial", Model.BlogPages.Take(3))
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @Html.Action("GetFooter", "CMS")
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.appear.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/vivus.js"></script>
+    <script src="~/Scripts/theme.js"></script>
+    <script src="~/Scripts/demo-architecture-2.js"></script>
+    <script src="~/Scripts/theme.init.js"></script>
+
+    @if ((string)(Session["ContentEditor"]) != "yes")
+    {
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script src="~/Scripts/custom.js"></script>
+    }
+    @if (User.Identity.IsAuthenticated && (string)(Session["ContentEditor"]) == "yes")
+    {
+        <script>
+            $('#MessageCont button').attr('disabled','true');
+        </script>
+    }
+
+    @{Html.RenderPartial("_EditorPartial");}
+
 </body>
 </html>
